@@ -511,3 +511,27 @@ body.panel-open {
     transition-duration: .01ms !important;
   }
 }
+/* ---------- Hero Footer ---------- */
+
+.hero-footer {
+    text-align: center;
+    margin-top: 18px;
+    padding-bottom: env(safe-area-inset-bottom);
+    animation: fade-in 1.2s ease;
+}
+
+.hero-footer-title {
+    color: rgba(242,231,207,.82);
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+}
+
+.hero-footer-subtitle {
+    margin-top: 6px;
+    color: rgba(242,231,207,.55);
+    font-size: .72rem;
+    font-style: italic;
+    letter-spacing: .04em;
+}
