@@ -373,3 +373,7 @@ body.panel-open {
     transition-duration: .01ms !important;
   }
 }
+/* Ben's photo positioning */
+.member.ben img {
+    object-position: center 80%;
+}
