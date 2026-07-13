@@ -4,26 +4,29 @@
 
 :root {
   --cream: #f2e7cf;
+  --cream-soft: rgba(242, 231, 207, .78);
   --gold: #d2a34e;
   --ink: #17110d;
-  --panel: rgba(20, 14, 10, 0.97);
-  --line: rgba(242, 231, 207, 0.35);
+  --panel: rgba(20, 14, 10, .975);
+  --line: rgba(242, 231, 207, .28);
 }
 
 html {
+  min-height: 100%;
   background: var(--ink);
   color: var(--cream);
-  font-family: "Libre Franklin", system-ui, sans-serif;
+  font-family: "Libre Franklin", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 body {
-  margin: 0;
   min-height: 100%;
+  margin: 0;
   overflow-x: hidden;
 }
 
 button,
-a {
+a,
+summary {
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -33,10 +36,23 @@ a {
   display: grid;
   grid-template-rows: 1fr auto;
   align-items: center;
-  padding: calc(22px + env(safe-area-inset-top)) 18px calc(18px + env(safe-area-inset-bottom));
+  overflow: hidden;
   isolation: isolate;
-  background:
-    url("images/hero.jpg") center 38% / cover no-repeat;
+  padding:
+    calc(18px + env(safe-area-inset-top))
+    18px
+    calc(18px + env(safe-area-inset-bottom));
+  background: url("images/hero.jpg") 52% 40% / cover no-repeat;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -1.5%;
+  z-index: -2;
+  background: inherit;
+  transform: scale(1.025);
+  animation: breathe 18s ease-in-out infinite alternate;
 }
 
 .hero__shade {
@@ -44,65 +60,59 @@ a {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(to bottom, rgba(10, 7, 5, 0.28) 0%, rgba(10, 7, 5, 0.08) 38%, rgba(10, 7, 5, 0.8) 100%),
-    linear-gradient(to right, rgba(10, 7, 5, 0.2), transparent 55%);
+    linear-gradient(to bottom, rgba(10, 7, 5, .35) 0%, rgba(10, 7, 5, .05) 42%, rgba(10, 7, 5, .84) 100%),
+    radial-gradient(circle at 50% 42%, transparent 15%, rgba(8, 5, 4, .28) 100%);
 }
 
 .brand {
-  align-self: center;
-  justify-self: center;
-  width: min(92vw, 680px);
-  text-align: center;
-  text-shadow: 0 4px 24px rgba(0,0,0,.75);
-  transform: translateY(-5vh);
+  align-self: start;
+  justify-self: start;
+  width: min(62vw, 240px);
+  margin-top: 1vh;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, .75));
+  animation: fade-in .9s ease both;
 }
 
-.brand__the,
-.brand__tagline {
-  margin: 0;
-  letter-spacing: .3em;
-  font-weight: 700;
-}
-
-.brand__the {
-  font-size: clamp(.72rem, 2.8vw, 1rem);
-}
-
-.brand h1 {
-  margin: .08em 0;
-  font-family: "League Gothic", Impact, sans-serif;
-  font-size: clamp(3.4rem, 16vw, 8.5rem);
-  font-weight: 400;
-  line-height: .86;
-  letter-spacing: .015em;
-  text-transform: uppercase;
+.brand__logo {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .brand__tagline {
-  margin-top: .8rem;
-  font-size: clamp(.72rem, 3vw, 1rem);
+  margin: .15rem 0 0;
   color: var(--gold);
+  font-size: clamp(.63rem, 2.7vw, .84rem);
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, .9);
 }
 
 .main-nav {
   display: grid;
-  gap: 9px;
+  gap: 8px;
   width: 100%;
+  animation: rise-in .7s .2s ease both;
 }
 
 .nav-card {
   appearance: none;
   width: 100%;
-  min-height: 67px;
-  padding: 12px 16px;
+  min-height: 64px;
+  padding: 11px 15px;
   border: 1px solid var(--line);
   border-radius: 3px;
-  background: rgba(17, 12, 9, .63);
-  backdrop-filter: blur(8px);
+  background: rgba(17, 12, 9, .6);
+  backdrop-filter: blur(9px);
   color: var(--cream);
   text-align: left;
   cursor: pointer;
-  transition: transform .2s ease, background .2s ease, border-color .2s ease;
+  transition:
+    transform .2s ease,
+    background .2s ease,
+    border-color .2s ease;
 }
 
 .nav-card span,
@@ -112,15 +122,15 @@ a {
 
 .nav-card span {
   margin-bottom: 3px;
-  font-size: .66rem;
+  font-size: .64rem;
   letter-spacing: .16em;
   text-transform: uppercase;
-  opacity: .76;
+  opacity: .72;
 }
 
 .nav-card strong {
   font-family: "League Gothic", Impact, sans-serif;
-  font-size: 2rem;
+  font-size: 1.95rem;
   font-weight: 400;
   line-height: 1;
   letter-spacing: .03em;
@@ -128,7 +138,7 @@ a {
 }
 
 .nav-card--accent {
-  border-color: rgba(210, 163, 78, .75);
+  border-color: rgba(210, 163, 78, .76);
 }
 
 .nav-card:active {
@@ -141,13 +151,20 @@ a {
   z-index: 20;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: calc(70px + env(safe-area-inset-top)) 20px calc(40px + env(safe-area-inset-bottom));
-  background: var(--panel);
+  padding:
+    calc(70px + env(safe-area-inset-top))
+    20px
+    calc(42px + env(safe-area-inset-bottom));
+  background:
+    linear-gradient(rgba(20, 14, 10, .965), rgba(20, 14, 10, .99)),
+    url("images/hero.jpg") center / cover fixed;
   backdrop-filter: blur(16px);
   transform: translateY(100%);
   opacity: 0;
   pointer-events: none;
-  transition: transform .38s cubic-bezier(.2,.75,.2,1), opacity .25s ease;
+  transition:
+    transform .38s cubic-bezier(.2, .75, .2, 1),
+    opacity .25s ease;
 }
 
 .panel.is-open {
@@ -158,16 +175,16 @@ a {
 
 .panel__close {
   position: fixed;
-  top: calc(16px + env(safe-area-inset-top));
-  right: 16px;
+  top: calc(15px + env(safe-area-inset-top));
+  right: 15px;
   z-index: 2;
-  width: 44px;
-  height: 44px;
+  width: 45px;
+  height: 45px;
   border: 1px solid var(--line);
   border-radius: 50%;
-  background: rgba(0,0,0,.28);
+  background: rgba(0, 0, 0, .32);
   color: var(--cream);
-  font-size: 1.7rem;
+  font-size: 1.75rem;
   line-height: 1;
   cursor: pointer;
 }
@@ -188,17 +205,41 @@ a {
 h2 {
   margin: 0 0 24px;
   font-family: "League Gothic", Impact, sans-serif;
-  font-size: clamp(3.4rem, 15vw, 7rem);
+  font-size: clamp(3.35rem, 15vw, 7rem);
   font-weight: 400;
   line-height: .88;
+  letter-spacing: .01em;
   text-transform: uppercase;
 }
 
 .intro {
-  max-width: 650px;
+  max-width: 680px;
   margin: -8px 0 28px;
+  color: var(--cream-soft);
   line-height: 1.65;
-  color: rgba(242,231,207,.82);
+}
+
+.brotherhood {
+  max-width: 720px;
+  margin: -6px 0 30px;
+  padding: 17px 0 18px;
+  border-top: 1px solid rgba(210, 163, 78, .55);
+  border-bottom: 1px solid rgba(242, 231, 207, .15);
+}
+
+.brotherhood p {
+  margin: 0;
+  color: var(--cream-soft);
+  line-height: 1.6;
+}
+
+.brotherhood__lead {
+  margin-bottom: 8px !important;
+  color: var(--cream) !important;
+  font-family: "League Gothic", Impact, sans-serif;
+  font-size: clamp(1.75rem, 7vw, 2.5rem);
+  letter-spacing: .025em;
+  text-transform: uppercase;
 }
 
 .member-grid {
@@ -208,8 +249,8 @@ h2 {
 
 .member {
   overflow: hidden;
-  border: 1px solid rgba(242,231,207,.16);
-  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(242, 231, 207, .16);
+  background: rgba(255, 255, 255, .035);
 }
 
 .member img {
@@ -218,7 +259,11 @@ h2 {
   aspect-ratio: 4 / 3;
   object-fit: cover;
   object-position: center 28%;
-  filter: saturate(.78) contrast(1.08);
+  filter: saturate(.8) contrast(1.08);
+}
+
+.member--ben img {
+  object-position: center 80%;
 }
 
 .member div {
@@ -228,7 +273,7 @@ h2 {
 .member h3 {
   margin: 0;
   font-family: "League Gothic", Impact, sans-serif;
-  font-size: 2.6rem;
+  font-size: 2.65rem;
   font-weight: 400;
   line-height: 1;
   text-transform: uppercase;
@@ -237,7 +282,7 @@ h2 {
 .member .role {
   margin: 7px 0 13px;
   color: var(--gold);
-  font-size: .72rem;
+  font-size: .71rem;
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
@@ -245,23 +290,84 @@ h2 {
 
 .member p:last-child {
   margin: 0;
+  color: var(--cream-soft);
   line-height: 1.55;
-  color: rgba(242,231,207,.78);
 }
 
-.artist-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  border-top: 1px solid rgba(242,231,207,.18);
+.setlist {
+  border-top: 1px solid rgba(242, 231, 207, .18);
 }
 
-.artist-list span {
-  padding: 15px 0;
-  border-bottom: 1px solid rgba(242,231,207,.18);
+.setlist details {
+  border-bottom: 1px solid rgba(242, 231, 207, .18);
+}
+
+.setlist summary {
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.setlist summary::-webkit-details-marker {
+  display: none;
+}
+
+.setlist summary > span:first-child {
   font-family: "League Gothic", Impact, sans-serif;
-  font-size: 2.2rem;
+  font-size: clamp(1.75rem, 8vw, 2.5rem);
   letter-spacing: .025em;
+  line-height: 1;
   text-transform: uppercase;
+}
+
+.plus {
+  position: relative;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(242, 231, 207, .32);
+  border-radius: 50%;
+}
+
+.plus::before,
+.plus::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 11px;
+  height: 1px;
+  background: var(--gold);
+  transform: translate(-50%, -50%);
+  transition: transform .2s ease;
+}
+
+.plus::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+details[open] .plus::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.setlist ul {
+  margin: 0;
+  padding: 0 0 18px 19px;
+}
+
+.setlist li {
+  margin: 8px 0;
+  padding-left: 3px;
+  color: var(--cream-soft);
+  line-height: 1.5;
+}
+
+.setlist li::marker {
+  color: var(--gold);
 }
 
 .booking {
@@ -286,27 +392,56 @@ h2 {
   letter-spacing: .08em;
   text-decoration: none;
   text-transform: uppercase;
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.booking__email {
+  margin: 18px 0 0;
+  color: var(--cream);
+  font-size: .9rem;
+  letter-spacing: .03em;
 }
 
 .small-note {
   margin-top: 20px;
+  color: rgba(242, 231, 207, .58);
   font-size: .78rem;
   line-height: 1.5;
-  opacity: .62;
 }
 
 body.panel-open {
   overflow: hidden;
 }
 
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes breathe {
+  from { transform: scale(1.025) translate3d(0, 0, 0); }
+  to { transform: scale(1.055) translate3d(-.3%, -.2%, 0); }
+}
+
 @media (min-width: 760px) {
   .hero {
-    padding: 34px 5vw 34px;
+    padding: 34px 5vw;
     background-position: center 45%;
   }
 
   .brand {
-    transform: translateY(-3vh);
+    align-self: center;
+    width: min(36vw, 510px);
+    margin: 0 0 8vh 1vw;
+  }
+
+  .brand__tagline {
+    font-size: .95rem;
   }
 
   .main-nav {
@@ -329,29 +464,30 @@ body.panel-open {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .artist-list {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 40px;
-  }
-
   .booking__button {
     width: auto;
-    align-self: flex-start;
     min-width: 230px;
+    align-self: flex-start;
+  }
+
+  .booking__button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
   }
 }
 
 @media (orientation: landscape) and (max-height: 620px) {
   .hero {
-    grid-template-columns: 1fr minmax(340px, 44vw);
+    grid-template-columns: minmax(250px, 1fr) minmax(330px, 42vw);
     grid-template-rows: 1fr;
     gap: 24px;
+    background-position: center 42%;
   }
 
   .brand {
-    justify-self: start;
-    text-align: left;
-    transform: none;
+    align-self: center;
+    width: min(34vw, 360px);
+    margin: 0;
   }
 
   .main-nav {
@@ -360,7 +496,7 @@ body.panel-open {
   }
 
   .nav-card {
-    min-height: 58px;
+    min-height: 57px;
     text-align: left;
   }
 }
@@ -370,10 +506,8 @@ body.panel-open {
   *::before,
   *::after {
     scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
   }
-}
-/* Ben's photo positioning */
-.member.ben img {
-    object-position: center 80%;
 }

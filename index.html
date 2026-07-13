@@ -4,50 +4,61 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#17110d">
-  <meta name="description" content="The Band of Brothers — live country music in Kentucky.">
+  <meta name="description" content="The Band of Brothers — live country music for fairs, festivals, venues and private events throughout Kentucky.">
   <title>The Band of Brothers | Live Country Music</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <main class="hero" id="home">
     <div class="hero__shade"></div>
 
     <header class="brand" aria-label="The Band of Brothers">
-      <p class="brand__the">THE</p>
-      <h1>BAND OF BROTHERS</h1>
-      <p class="brand__tagline">LIVE COUNTRY MUSIC</p>
+      <img
+        class="brand__logo"
+        src="images/band-logo.png"
+        alt="The Band of Brothers"
+      >
+      <p class="brand__tagline">Live Country Music</p>
     </header>
 
     <nav class="main-nav" aria-label="Primary navigation">
-      <button class="nav-card" data-panel="brothers">
+      <button class="nav-card" type="button" data-panel="brothers">
         <span>Meet the</span>
         <strong>Brothers</strong>
       </button>
 
-      <button class="nav-card" data-panel="setlist">
+      <button class="nav-card" type="button" data-panel="setlist">
         <span>Explore the</span>
         <strong>Setlist</strong>
       </button>
 
-      <button class="nav-card nav-card--accent" data-panel="booking">
+      <button class="nav-card nav-card--accent" type="button" data-panel="booking">
         <span>Bring us to your event</span>
         <strong>Book Now</strong>
       </button>
     </nav>
   </main>
 
-  <section class="panel" id="brothers" aria-hidden="true">
-    <button class="panel__close" aria-label="Close panel">×</button>
+  <section class="panel" id="brothers" aria-hidden="true" aria-labelledby="brothers-title">
+    <button class="panel__close" type="button" aria-label="Close Meet the Brothers panel">×</button>
+
     <div class="panel__inner">
       <p class="eyebrow">THE BAND</p>
-      <h2>Meet the Brothers</h2>
+      <h2 id="brothers-title">Meet the Brothers</h2>
+
+      <div class="brotherhood">
+        <p class="brotherhood__lead">Three by blood. One by the road. All country.</p>
+        <p>Band of Brothers is more than a name. Three grew up as family; the fourth earned his place one mile, one stage and one song at a time.</p>
+      </div>
 
       <div class="member-grid">
         <article class="member">
-          <img src="images/jeremy.jpg" alt="Jeremy performing">
+          <img src="images/jeremy.jpg" alt="Jeremy performing with the band">
           <div>
             <h3>Jeremy</h3>
             <p class="role">Bass • Electric Guitar</p>
@@ -55,8 +66,8 @@
           </div>
         </article>
 
-        <article class="member ben">
-          <img src="images/ben.jpg" alt="Ben performing">
+        <article class="member member--ben">
+          <img src="images/ben.jpg" alt="Ben performing on drums">
           <div>
             <h3>Ben</h3>
             <p class="role">Drums</p>
@@ -65,16 +76,16 @@
         </article>
 
         <article class="member">
-          <img src="images/matt.jpg" alt="Matt performing">
+          <img src="images/matt.jpg" alt="Matt singing and playing guitar">
           <div>
             <h3>Matt</h3>
             <p class="role">Lead Vocals • Guitar</p>
-            <p>The frontman with a strong country voice and an easy stage presence that keeps the room connected from the first song to the last.</p>
+            <p>The frontman with a strong country voice and an easy stage presence that keeps the room connected from the first song to the last. Matt also serves in the United States Marine Corps Reserve.</p>
           </div>
         </article>
 
         <article class="member">
-          <img src="images/tim.jpg" alt="Tim performing">
+          <img src="images/tim.jpg" alt="Tim performing with electric guitar">
           <div>
             <h3>Tim</h3>
             <p class="role">Electric Guitar • Fiddle • Vocals</p>
@@ -85,41 +96,168 @@
     </div>
   </section>
 
-  <section class="panel" id="setlist" aria-hidden="true">
-    <button class="panel__close" aria-label="Close panel">×</button>
+  <section class="panel" id="setlist" aria-hidden="true" aria-labelledby="setlist-title">
+    <button class="panel__close" type="button" aria-label="Close setlist panel">×</button>
+
     <div class="panel__inner">
       <p class="eyebrow">THE MUSIC</p>
-      <h2>Country Favorites</h2>
-      <p class="intro">A deep song bank built around the country music people know, sing and dance to.</p>
+      <h2 id="setlist-title">Our Song Bank</h2>
+      <p class="intro">Country favorites built for singing along, dancing and keeping the night moving. Tap an artist to see the songs.</p>
 
-      <div class="artist-list">
-        <span>George Strait</span>
-        <span>Alan Jackson</span>
-        <span>Brooks & Dunn</span>
-        <span>Garth Brooks</span>
-        <span>Joe Diffie</span>
-        <span>Travis Tritt</span>
-        <span>Mark Chesnutt</span>
-        <span>John Michael Montgomery</span>
-        <span>Toby Keith</span>
+      <div class="setlist" id="artist-accordion">
+        <details>
+          <summary><span>Alan Jackson</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Chattahoochee</li></ul>
+        </details>
+
+        <details>
+          <summary><span>Alabama</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul>
+            <li>Dixieland Delight</li>
+            <li>I'm in a Hurry (And Don't Know Why)</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary><span>Billy Ray Cyrus</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Achy Breaky Heart</li></ul>
+        </details>
+
+        <details>
+          <summary><span>Blake Shelton</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Ol' Red</li></ul>
+        </details>
+
+        <details>
+          <summary><span>Brooks &amp; Dunn</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul>
+            <li>Brand New Man</li>
+            <li>Neon Moon</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary><span>David Allan Coe</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>You Never Even Called Me by My Name</li></ul>
+        </details>
+
+        <details>
+          <summary><span>David Lee Murphy</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Dust on the Bottle</li></ul>
+        </details>
+
+        <details>
+          <summary><span>Dwight Yoakam</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Turn It On, Turn It Up, Turn Me Loose</li></ul>
+        </details>
+
+        <details>
+          <summary><span>Garth Brooks</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul>
+            <li>Friends in Low Places</li>
+            <li>Garth Medley — ending with “Papa Loved Mama”</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary><span>Gary Allan</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Right Where I Need to Be</li></ul>
+        </details>
+
+        <details>
+          <summary><span>Hank Williams</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Jambalaya (On the Bayou)</li></ul>
+        </details>
+
+        <details>
+          <summary><span>Jason Aldean</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Hicktown</li></ul>
+        </details>
+
+        <details>
+          <summary><span>Joe Diffie</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Pickup Man</li></ul>
+        </details>
+
+        <details>
+          <summary><span>John Mellencamp</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Small Town</li></ul>
+        </details>
+
+        <details>
+          <summary><span>John Prine</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Paradise</li></ul>
+        </details>
+
+        <details>
+          <summary><span>Johnny Cash</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Folsom Prison Blues</li></ul>
+        </details>
+
+        <details>
+          <summary><span>Keith Urban</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Somebody Like You</li></ul>
+        </details>
+
+        <details>
+          <summary><span>The Kentucky Headhunters</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Walk Softly on This Heart of Mine</li></ul>
+        </details>
+
+        <details>
+          <summary><span>Lynyrd Skynyrd</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Sweet Home Alabama</li></ul>
+        </details>
+
+        <details>
+          <summary><span>Nitty Gritty Dirt Band</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Fishin' in the Dark</li></ul>
+        </details>
+
+        <details>
+          <summary><span>Old Crow Medicine Show / Darius Rucker</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Wagon Wheel</li></ul>
+        </details>
+
+        <details>
+          <summary><span>Steve Earle</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Copperhead Road</li></ul>
+        </details>
+
+        <details>
+          <summary><span>Toby Keith</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Should've Been a Cowboy</li></ul>
+        </details>
+
+        <details>
+          <summary><span>Traditional / Bluegrass</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Rocky Top</li></ul>
+        </details>
+
+        <details>
+          <summary><span>Zac Brown Band</span><span class="plus" aria-hidden="true"></span></summary>
+          <ul><li>Chicken Fried</li></ul>
+        </details>
       </div>
 
-      <p class="small-note">Full song list coming next.</p>
+      <p class="small-note">Our song bank continues to grow, and sets are tailored to the event.</p>
     </div>
   </section>
 
-  <section class="panel" id="booking" aria-hidden="true">
-    <button class="panel__close" aria-label="Close panel">×</button>
+  <section class="panel" id="booking" aria-hidden="true" aria-labelledby="booking-title">
+    <button class="panel__close" type="button" aria-label="Close booking panel">×</button>
+
     <div class="panel__inner booking">
       <p class="eyebrow">BOOK THE BAND</p>
-      <h2>Let’s Make It a Night</h2>
+      <h2 id="booking-title">Let’s Make It a Night</h2>
       <p class="intro">Fairs, festivals, private events, wineries, parties and venues throughout Kentucky and the surrounding region.</p>
 
       <a class="booking__button" href="mailto:timsmithpilot@gmail.com?subject=Band%20of%20Brothers%20Booking%20Inquiry">
         Email the Band
       </a>
 
-      <p class="small-note">We can replace this with a full booking form after the first version is live.</p>
+      <p class="booking__email">timsmithpilot@gmail.com</p>
+      <p class="small-note">Tell us the date, location and type of event, and we’ll get back to you with availability.</p>
     </div>
   </section>
 

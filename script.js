@@ -1,10 +1,15 @@
-const buttons = document.querySelectorAll("[data-panel]");
+const panelButtons = document.querySelectorAll("[data-panel]");
 const panels = document.querySelectorAll(".panel");
 const closeButtons = document.querySelectorAll(".panel__close");
+const accordionItems = document.querySelectorAll("#artist-accordion details");
 
-function openPanel(id) {
+let lastTrigger = null;
+
+function openPanel(id, trigger) {
   const panel = document.getElementById(id);
   if (!panel) return;
+
+  lastTrigger = trigger || null;
 
   panels.forEach(item => {
     item.classList.remove("is-open");
@@ -14,9 +19,11 @@ function openPanel(id) {
   panel.classList.add("is-open");
   panel.setAttribute("aria-hidden", "false");
   document.body.classList.add("panel-open");
+  panel.scrollTop = 0;
 
-  const closeButton = panel.querySelector(".panel__close");
-  closeButton?.focus();
+  window.setTimeout(() => {
+    panel.querySelector(".panel__close")?.focus();
+  }, 100);
 }
 
 function closePanels() {
@@ -24,11 +31,16 @@ function closePanels() {
     panel.classList.remove("is-open");
     panel.setAttribute("aria-hidden", "true");
   });
+
   document.body.classList.remove("panel-open");
+
+  if (lastTrigger) {
+    window.setTimeout(() => lastTrigger.focus(), 100);
+  }
 }
 
-buttons.forEach(button => {
-  button.addEventListener("click", () => openPanel(button.dataset.panel));
+panelButtons.forEach(button => {
+  button.addEventListener("click", () => openPanel(button.dataset.panel, button));
 });
 
 closeButtons.forEach(button => {
@@ -43,4 +55,14 @@ panels.forEach(panel => {
 
 document.addEventListener("keydown", event => {
   if (event.key === "Escape") closePanels();
+});
+
+accordionItems.forEach(item => {
+  item.addEventListener("toggle", () => {
+    if (!item.open) return;
+
+    accordionItems.forEach(otherItem => {
+      if (otherItem !== item) otherItem.open = false;
+    });
+  });
 });
