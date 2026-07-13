@@ -1,13 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17110d">
+  <meta name="description" content="The Band of Brothers — live country music in Kentucky.">
   <title>The Band of Brothers | Live Country Music</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>The Band of Brothers</h1>
-  <p>Live Country Music</p>
-  <p>Official website coming soon.</p>
+  <main class="hero" id="home">
+    <div class="hero__shade"></div>
+
+    <header class="brand" aria-label="The Band of Brothers">
+      <p class="brand__the">THE</p>
+      <h1>BAND OF BROTHERS</h1>
+      <p class="brand__tagline">LIVE COUNTRY MUSIC</p>
+    </header>
+
+    <nav class="main-nav" aria-label="Primary navigation">
+      <button class="nav-card" data-panel="brothers">
+        <span>Meet the</span>
+        <strong>Brothers</strong>
+      </button>
+
+      <button class="nav-card" data-panel="setlist">
+        <span>Explore the</span>
+        <strong>Setlist</strong>
+      </button>
+
+      <button class="nav-card nav-card--accent" data-panel="booking">
+        <span>Bring us to your event</span>
+        <strong>Book Now</strong>
+      </button>
+    </nav>
+  </main>
+
+  <section class="panel" id="brothers" aria-hidden="true">
+    <button class="panel__close" aria-label="Close panel">×</button>
+    <div class="panel__inner">
+      <p class="eyebrow">THE BAND</p>
+      <h2>Meet the Brothers</h2>
+
+      <div class="member-grid">
+        <article class="member">
+          <img src="images/jeremy.jpg" alt="Jeremy performing">
+          <div>
+            <h3>Jeremy</h3>
+            <p class="role">Bass • Electric Guitar</p>
+            <p>The low-end anchor with the versatility to move from a locked-in groove to an electric-guitar part without missing a beat.</p>
+          </div>
+        </article>
+
+        <article class="member">
+          <img src="images/ben.jpg" alt="Ben performing">
+          <div>
+            <h3>Ben</h3>
+            <p class="role">Drums</p>
+            <p>The steady engine behind the band—keeping every shuffle, two-step and driving country rocker right where it belongs.</p>
+          </div>
+        </article>
+
+        <article class="member">
+          <img src="images/matt.jpg" alt="Matt performing">
+          <div>
+            <h3>Matt</h3>
+            <p class="role">Lead Vocals • Guitar</p>
+            <p>The frontman with a strong country voice and an easy stage presence that keeps the room connected from the first song to the last.</p>
+          </div>
+        </article>
+
+        <article class="member">
+          <img src="images/tim.jpg" alt="Tim performing">
+          <div>
+            <h3>Tim</h3>
+            <p class="role">Electric Guitar • Fiddle • Vocals</p>
+            <p>Adding Telecaster bite, fiddle fire and harmony vocals—the extra colors that give the band its unmistakable country sound.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="setlist" aria-hidden="true">
+    <button class="panel__close" aria-label="Close panel">×</button>
+    <div class="panel__inner">
+      <p class="eyebrow">THE MUSIC</p>
+      <h2>Country Favorites</h2>
+      <p class="intro">A deep song bank built around the country music people know, sing and dance to.</p>
+
+      <div class="artist-list">
+        <span>George Strait</span>
+        <span>Alan Jackson</span>
+        <span>Brooks & Dunn</span>
+        <span>Garth Brooks</span>
+        <span>Joe Diffie</span>
+        <span>Travis Tritt</span>
+        <span>Mark Chesnutt</span>
+        <span>John Michael Montgomery</span>
+        <span>Toby Keith</span>
+      </div>
+
+      <p class="small-note">Full song list coming next.</p>
+    </div>
+  </section>
+
+  <section class="panel" id="booking" aria-hidden="true">
+    <button class="panel__close" aria-label="Close panel">×</button>
+    <div class="panel__inner booking">
+      <p class="eyebrow">BOOK THE BAND</p>
+      <h2>Let’s Make It a Night</h2>
+      <p class="intro">Fairs, festivals, private events, wineries, parties and venues throughout Kentucky and the surrounding region.</p>
+
+      <a class="booking__button" href="mailto:timsmithpilot@gmail.com?subject=Band%20of%20Brothers%20Booking%20Inquiry">
+        Email the Band
+      </a>
+
+      <p class="small-note">We can replace this with a full booking form after the first version is live.</p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
